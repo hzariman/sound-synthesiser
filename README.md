@@ -1,2 +1,3 @@
-# sound-synthesiser
+# Sound Synthesiser
  
+Created using MatLAB
