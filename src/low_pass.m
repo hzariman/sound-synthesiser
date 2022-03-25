@@ -1,12 +1,11 @@
 % Applies a rudimentary bandpass filter given any signal
 % Credit: inspired by Darell Chua Yun Da ECE 45 FA2021 Project
-function y = bandpass(signal, fs, low_bound, high_bound)
+function y = low_pass(signal, fs, low_bound)
 
 % Input Pramaters
 % signal: the signal the band pass will be applied to
 % fs: the sampling frequency
-% low bound : the lowest bound for the range of frequencies kept
-% high bound : the highest bound for the range of frequencies kept
+% low bound : the highest bound for the range of frequencies kept
 
     % The length of the signal
     singalLength = length(signal);
@@ -28,12 +27,10 @@ function y = bandpass(signal, fs, low_bound, high_bound)
     % For every index in the output matrix
     for n = 1:FLength
 
-        % if the frequency at the specific index is greater than the lowest
-        % bound and smaller at the highest bound then let through.
-        if low_bound < abs(F(n))
-            if (high_bound > abs(F(n)))
+        % if the frequency at the specific index is smaller than the lowe
+        % bound then let the signal through
+        if abs(F(n)) < low_bound
                 Y(n) = 1;
-            end
         else
             Y(n) = 0;
         end
